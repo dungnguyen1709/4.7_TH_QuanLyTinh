@@ -1,5 +1,6 @@
 package com.codegym.config;
 
+import com.codegym.formatter.ProvinceFormatter;
 import com.codegym.service.CustomerService;
 import com.codegym.service.ProvinceService;
 import com.codegym.service.impl.CustomerServiceImpl;
@@ -125,8 +126,8 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         return properties;
     }
 
-//    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        registry.addFormatter(new ProvinceFormatter(applicationContext.getBean(ProvinceService.class)));
-//    }
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+       registry.addFormatter(new ProvinceFormatter(applicationContext.getBean(ProvinceService.class)));
+   }
 }
