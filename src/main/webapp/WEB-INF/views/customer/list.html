@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Customer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Customer List</h1>
+<a th:href="@{/create-customer}">Create New Customer</a>
+<div class="container">
+    <table class="table table-hover" th:object="${customers}">
+        <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Province</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+        </tr>
+        <tr th:each="customer : ${customers}">
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.firstName}"></td>
+            <td th:text="${customer.lastName}"></td>
+            <td th:text="${customer.province.name}"></td>
+            <td><a th:href="@{/edit-customer/__${customer.id}__}">Edit</a> </td>
+            <td><a th:href="@{/delete-customer/__${customer.id}__}">Delete</a> </td>
+
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
